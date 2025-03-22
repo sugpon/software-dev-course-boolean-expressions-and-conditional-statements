@@ -24,7 +24,7 @@ Paste the following code into your editor:
 
 */
 
-const readline = require('readline-sync');
+/*const readline = require('readline-sync');
 
 const hasTorch = true;
 const hasMap = false;
@@ -40,7 +40,7 @@ if (choice === "mountains" && hasTorch) {
   console.log("You find your way to the village.");
 } else {
   console.log("You get lost and wander aimlessly.");
-}
+}*/
 
 /* 
 
@@ -50,3 +50,34 @@ Add Customization and expand the game:
   - Use nested conditionals and logical operators to create complex outcomes.
 
 */
+
+const readline = require('readline-sync');
+
+const hasTorch = true;
+const hasMap = false;
+const hasSword = false;
+
+console.log("You see two paths: one leads to the mountains, the other to the village.");
+const choice = readline.question("Do you go to the 'mountains' or the 'village'? ");
+
+if (choice === "mountains") {
+  if (hasTorch) {
+    console.log("You safely navigate through the dark mountains.");
+    const caveChoice = readline.question("You find a cave. Enter or leave? ");
+    if (caveChoice === "enter" && hasSword) {
+      console.log("You defeat a lurking beast and find treasure!");
+    } else {
+      console.log("You avoid danger and move on.");
+    }
+  } else {
+    console.log("It's too dark to proceed. You turn back.");
+  }
+} else if (choice === "village") {
+  if (hasMap || hasTorch) {
+    console.log("You reach the village safely.");
+  } else {
+    console.log("You get lost on the way but eventually arrive.");
+  }
+} else {
+  console.log("You hesitate and get lost in the woods.");
+}
